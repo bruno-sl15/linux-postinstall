@@ -1,6 +1,6 @@
 # linux-postinstall
-Script de pós instalação para distros baseadas em Ubuntu
-Testado no **Linux Mint** e **Zorin OS**
+Script de pós instalação para distros baseadas em Ubuntu.\
+Testado no **Linux Mint** e **Zorin OS**.
 
 ## Como usar
 
