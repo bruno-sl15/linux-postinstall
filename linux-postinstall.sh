@@ -42,8 +42,8 @@ create_aliases(){
   echo -e "${VERDE}Criando aliases${SEM_COR}"
 
   touch $HOME/.bash_aliases
-  echo "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all'" >> $HOME/.bash_aliases
-  echo "alias atualizar.desligar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all && shutdown'" >> $HOME/.bash_aliases
+  echo "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all && npm update'" >> $HOME/.bash_aliases
+  echo "alias atualizar.desligar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all && npm update && shutdown'" >> $HOME/.bash_aliases
   echo "alias chat='shell-genie ask'" >> $HOME/.bash_aliases
 }
 
