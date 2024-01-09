@@ -6,5 +6,5 @@ Testado no **Linux Mint** e **Zorin OS**.
 
 Apenas execute o comando abaixo no terminal
 ```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/bruno-sl15/linux-postinstall/main/linux-postinstall.sh")
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/bruno-sl15/linux-postinstall/main/linux-postinstall.sh)"
 ```
