@@ -1,5 +1,6 @@
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 DIRETORIO_DOWNLOADS="$HOME/Downloads/Programas"
+GIT_USER="bruno-sl15"
 MEU_EMAIL="bruno.silvaleite15@gmail.com"
 NGROK_AUTHTOKEN="1u5n8YGwAC0NLkfVC6jt08dMBjs_38G6BdWpYVNbRdKNRd3UY"
 
@@ -30,6 +31,7 @@ PACOTES_PARA_INSTALAR=(
   libqt5x11extras5
   nodejs
   npm
+  xsel
 )
 
 PACOTES_PARA_REMOVER=(
@@ -45,6 +47,8 @@ create_aliases(){
   echo "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all && npm update'" >> $HOME/.bash_aliases
   echo "alias atualizar.desligar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all && npm update && shutdown'" >> $HOME/.bash_aliases
   echo "alias chat='shell-genie ask'" >> $HOME/.bash_aliases
+  echo "alias suggest='gh copilot suggest'" >> $HOME/.bash_aliases
+  echo "alias explain='gh copilot explain'" >> $HOME/.bash_aliases
 }
 
 apt_update(){
@@ -95,12 +99,12 @@ instalar_flatpaks(){
 configurar_git(){
   echo -e "${VERDE}Configurando git:${SEM_COR}"
 
-  #git config --global user.name "bruno-sl15"
-  #git config --global user.email "$MEU_EMAIL"
+  git config --global user.name "$GIT_USER"
+  git config --global user.email "$MEU_EMAIL"
 
-  #gerar chave ssh
-  #ssh-keygen -t ed25519 -C "$MEU_EMAIL"
-  #eval "$(ssh-agent -s)"
+  # gerar chave ssh
+  ssh-keygen -t ed25519 -C "$MEU_EMAIL"
+  eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_ed25519
   cat ~/.ssh/id_ed25519.pub
 
@@ -134,6 +138,21 @@ pacotes_npm(){
   ngrok config add-authtoken $NGROK_AUTHTOKEN
 }
 
+github_cli_copilot(){
+  echo -e "${VERDE}Instalando GitHub CLI e GitHub Copilot:${SEM_COR}"
+
+  # Instalação do GitHub CLI
+  type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+  && sudo apt update \
+  && sudo apt install gh -y
+
+  # Instalação do GitHub Copilot
+  gh extension install github/gh-copilot
+}
+
 # Execução
 create_aliases
 apt_update
@@ -144,3 +163,4 @@ instalar_flatpaks
 configurar_git
 shell_genie
 pacotes_npm
+github_cli_copilot
