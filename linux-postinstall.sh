@@ -149,6 +149,9 @@ github_cli_copilot(){
   && sudo apt update \
   && sudo apt install gh -y
 
+  # Autenticação no GitHub CLI
+  gh auth login
+
   # Instalação do GitHub Copilot
   gh extension install github/gh-copilot
 }
