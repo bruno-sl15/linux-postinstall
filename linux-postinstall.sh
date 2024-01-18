@@ -44,11 +44,14 @@ create_aliases(){
   echo -e "${VERDE}Criando aliases${SEM_COR}"
 
   touch $HOME/.bash_aliases
-  echo "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all && npm update'" >> $HOME/.bash_aliases
-  echo "alias atualizar.desligar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all && npm update && shutdown'" >> $HOME/.bash_aliases
-  echo "alias chat='shell-genie ask'" >> $HOME/.bash_aliases
-  echo "alias suggest='gh copilot suggest'" >> $HOME/.bash_aliases
-  echo "alias explain='gh copilot explain'" >> $HOME/.bash_aliases
+
+  echo -e "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all && npm update'\n" >> $HOME/.bash_aliases
+
+  echo -e "alias atualizar.desligar='sudo apt update |& tee ~/update.log && sudo apt upgrade -y |& tee -a ~/update.log && sudo apt autoremove -y |& tee -a ~/update.log && flatpak update -y |& tee -a ~/update.log && pipx upgrade-all |& tee -a ~/update.log && npm update |& tee -a ~/update.log && shutdown -h now'\n" >> $HOME/.bash_aliases
+
+  echo -e "alias chat='shell-genie ask'" >> $HOME/.bash_aliases
+  echo -e "alias suggest='gh copilot suggest'" >> $HOME/.bash_aliases
+  echo -e "alias explain='gh copilot explain'" >> $HOME/.bash_aliases
 }
 
 apt_update(){
