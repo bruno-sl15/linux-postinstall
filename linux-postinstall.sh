@@ -32,6 +32,7 @@ PACOTES_PARA_INSTALAR=(
   nodejs
   npm
   xsel
+  python3-pip
 )
 
 PACOTES_PARA_REMOVER=(
@@ -45,7 +46,7 @@ create_aliases(){
 
   touch $HOME/.bash_aliases
 
-  echo -e "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && pipx upgrade-all && npm update'\n" >> $HOME/.bash_aliases
+  echo -e "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update -y && pipx upgrade-all && npm update'\n" >> $HOME/.bash_aliases
 
   echo -e "alias atualizar.desligar='sudo apt update |& tee ~/update.log && sudo apt upgrade -y |& tee -a ~/update.log && sudo apt autoremove -y |& tee -a ~/update.log && flatpak update -y |& tee -a ~/update.log && pipx upgrade-all |& tee -a ~/update.log && npm update |& tee -a ~/update.log && shutdown -h now'\n" >> $HOME/.bash_aliases
 
