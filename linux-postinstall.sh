@@ -46,9 +46,9 @@ create_aliases(){
 
   touch $HOME/.bash_aliases
 
-  echo -e "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update -y && sudo snap refresh && sudo npm update -gy'\n" >> $HOME/.bash_aliases
+  echo -e "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt upgrade snapd -y && sudo apt autoremove -y && flatpak update -y && sudo snap refresh && sudo npm update -gy'\n" >> $HOME/.bash_aliases
 
-  echo -e "alias atualizar.desligar='sudo apt update |& tee ~/update.log && sudo apt upgrade -y |& tee -a ~/update.log && sudo apt autoremove -y |& tee -a ~/update.log && flatpak update -y |& tee -a ~/update.log && sudo snap refresh |& tee -a ~/update.log && sudo npm update -gy |& tee -a ~/update.log && shutdown -h now'\n" >> $HOME/.bash_aliases
+  echo -e "alias atualizar.desligar='sudo apt update |& tee ~/update.log && sudo apt upgrade -y |& tee -a ~/update.log && sudo apt upgrade snapd -y |& tee -a ~/update.log && sudo apt autoremove -y |& tee -a ~/update.log && flatpak update -y |& tee -a ~/update.log && sudo snap refresh |& tee -a ~/update.log && sudo npm update -gy |& tee -a ~/update.log && shutdown -h now'\n" >> $HOME/.bash_aliases
 
   echo -e "alias chat='shell-genie ask'" >> $HOME/.bash_aliases
   echo -e "alias suggest='gh copilot suggest'" >> $HOME/.bash_aliases
