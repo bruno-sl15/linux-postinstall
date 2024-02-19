@@ -17,7 +17,6 @@ PACOTES_PARA_INSTALAR=(
   gparted
   git
   qbittorrent
-  pipx
   cpu-checker
   qemu
   qemu-kvm
@@ -29,10 +28,11 @@ PACOTES_PARA_INSTALAR=(
   libqt5opengl5
   libqt5printsupport5
   libqt5x11extras5
-  nodejs
-  npm
   xsel
   python3-pip
+  #pipx
+  #nodejs
+  #npm
 )
 
 PACOTES_PARA_REMOVER=(
@@ -46,9 +46,9 @@ create_aliases(){
 
   touch $HOME/.bash_aliases
 
-  echo -e "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update -y && pipx upgrade-all && npm update'\n" >> $HOME/.bash_aliases
+  echo -e "alias atualizar='sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update -y && sudo snap refresh && sudo npm update -gy'\n" >> $HOME/.bash_aliases
 
-  echo -e "alias atualizar.desligar='sudo apt update |& tee ~/update.log && sudo apt upgrade -y |& tee -a ~/update.log && sudo apt autoremove -y |& tee -a ~/update.log && flatpak update -y |& tee -a ~/update.log && pipx upgrade-all |& tee -a ~/update.log && npm update |& tee -a ~/update.log && shutdown -h now'\n" >> $HOME/.bash_aliases
+  echo -e "alias atualizar.desligar='sudo apt update |& tee ~/update.log && sudo apt upgrade -y |& tee -a ~/update.log && sudo apt autoremove -y |& tee -a ~/update.log && flatpak update -y |& tee -a ~/update.log && sudo snap refresh |& tee -a ~/update.log && sudo npm update -gy |& tee -a ~/update.log && shutdown -h now'\n" >> $HOME/.bash_aliases
 
   echo -e "alias chat='shell-genie ask'" >> $HOME/.bash_aliases
   echo -e "alias suggest='gh copilot suggest'" >> $HOME/.bash_aliases
@@ -168,6 +168,6 @@ instalar_debs
 remover_pacotes
 instalar_flatpaks
 configurar_git
-shell_genie
 pacotes_npm
 github_cli_copilot
+#shell_genie
