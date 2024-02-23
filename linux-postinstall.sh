@@ -137,8 +137,11 @@ shell_genie(){
 pacotes_npm(){
   echo -e "${VERDE}Instalando pacotes npm:${SEM_COR}"
 
-  npm install -g http-server
-  npm install -g ngrok
+  sudo npm install -g http-server
+  sudo npm install -g ngrok
+  sudo npm install -g json-server
+  sudo npm install -g tar
+
   ngrok config add-authtoken $NGROK_AUTHTOKEN
 }
 
